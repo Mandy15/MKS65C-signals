@@ -9,10 +9,10 @@ static void sighandler(int signo){
   if(signo == SIGUSR1){
 		printf("PID of parent process: %d\n", getppid());
 	}else if(signo == SIGINT){
-    int fd = open("sigint.txt", O_WRONLY | O_APPEND);
+    int fd = open("sigint.txt", O_CREAT | O_WRONLY | O_APPEND);
     write(fd, "Program exited due to SIGINT.\n", 32);
     close(fd);
-    // printf("Check file for end, SIGINT \n");
+    printf("\nProgram exited due to SIGINT.\n");
 		exit(0);
 	}
 }
